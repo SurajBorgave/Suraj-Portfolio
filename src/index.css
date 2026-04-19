@@ -1,0 +1,115 @@
+:root {
+  /* Royal Elegant Palette */
+  --primary-gold: #D4AF37;
+  --primary-gold-glow: rgba(212, 175, 55, 0.4);
+  --bg-deep: #050505;
+  --bg-card: rgba(15, 25, 45, 0.7);
+  --accent-blue: #00f2ff;
+  --text-main: #FFFDD0; /* Soft Cream */
+  --text-muted: rgba(255, 253, 208, 0.6);
+  --glass-border: rgba(212, 175, 55, 0.2);
+  
+  /* Fonts */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Outfit', sans-serif;
+  
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, .serif {
+  font-family: var(--font-serif);
+}
+
+.gold-text {
+  background: linear-gradient(to right, #D4AF37, #FBF5B7, #D4AF37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: var(--transition);
+}
+
+.glass-card:hover {
+  border-color: var(--primary-gold);
+  box-shadow: 0 8px 32px 0 var(--primary-gold-glow);
+  transform: translateY(-5px);
+}
+
+.premium {
+  padding: 12px 28px;
+  border-radius: 50px;
+  border: 1px solid var(--primary-gold);
+  background: transparent;
+  color: var(--primary-gold) !important;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.premium:hover {
+  background: var(--primary-gold);
+  color: var(--bg-deep) !important;
+  box-shadow: 0 0 20px var(--primary-gold-glow);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-gold);
+  border-radius: 10px;
+}
+
+/* General Layout Utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 100px 0;
+}
+
+.section-title {
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
