@@ -6,7 +6,7 @@ import {
   ExternalLink, 
   Github, 
   Linkedin, 
-  Twitter
+  Globe
 } from 'lucide-react';
 
 // --- Dummy Data ---
@@ -327,7 +327,7 @@ const App = () => {
           <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', marginBottom: '30px' }}>
             <Github color="var(--text-muted)" size={24} style={{ cursor: 'pointer' }} />
             <Linkedin color="var(--text-muted)" size={24} style={{ cursor: 'pointer' }} />
-            <Twitter color="var(--text-muted)" size={24} style={{ cursor: 'pointer' }} />
+            <Globe color="var(--text-muted)" size={24} style={{ cursor: 'pointer' }} />
           </div>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>&copy; 2026 Suraj Professional. All Rights Reserved. Crafted with Royal Precision.</p>
         </div>
