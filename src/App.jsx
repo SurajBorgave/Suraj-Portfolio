@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
   Award, 
-  BookOpen, 
-  Briefcase, 
   Code, 
-  Mail, 
   ExternalLink, 
-  ChevronRight, 
-  FileText,
-  Github,
-  Linkedin,
+  Github, 
+  Linkedin, 
   Twitter
 } from 'lucide-react';
 
