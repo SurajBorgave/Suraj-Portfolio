@@ -73,9 +73,9 @@ const GlassConsole = () => (
     maxWidth: '400px'
   }}>
     <div style={{ opacity: 0.5, marginBottom: '10px' }}>// SYSTEM_STATUS_REPORT</div>
-    <div>> INITIALIZING NEURAL_GATES... <span style={{ color: 'white' }}>DONE</span></div>
-    <div>> SYNCING CLOUD_CORE... <span style={{ color: 'white' }}>OK</span></div>
-    <div>> DEPLOYING ROYAL_VUE... <span style={{ color: 'white' }}>ACTIVE</span></div>
+    <div>&gt; INITIALIZING NEURAL_GATES... <span style={{ color: 'white' }}>DONE</span></div>
+    <div>&gt; SYNCING CLOUD_CORE... <span style={{ color: 'white' }}>OK</span></div>
+    <div>&gt; DEPLOYING ROYAL_VUE... <span style={{ color: 'white' }}>ACTIVE</span></div>
     <div className="blink" style={{ width: '10px', height: '15px', background: 'var(--primary-gold)', display: 'inline-block', verticalAlign: 'middle', marginLeft: '5px' }}></div>
   </div>
 );
