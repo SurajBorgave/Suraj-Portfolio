@@ -59,6 +59,27 @@ const SKILLS = ["React", "Javascript", "Figma", "Node.js", "Python", "UI/UX", "M
 
 // --- Components ---
 
+const DigitalMatrix = () => (
+  <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.03]" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1 }}>
+    <div className="cyber-grid w-full h-full" style={{ width: '100%', height: '100%' }} />
+    <div className="scanline" />
+  </div>
+);
+
+const GlassConsole = () => (
+  <div className="glass-card mono" style={{ 
+    padding: '20px', fontSize: '0.8rem', color: 'var(--primary-gold)', 
+    borderLeft: '4px solid var(--primary-gold)', background: 'rgba(0,0,0,0.4)',
+    maxWidth: '400px'
+  }}>
+    <div style={{ opacity: 0.5, marginBottom: '10px' }}>// SYSTEM_STATUS_REPORT</div>
+    <div>> INITIALIZING NEURAL_GATES... <span style={{ color: 'white' }}>DONE</span></div>
+    <div>> SYNCING CLOUD_CORE... <span style={{ color: 'white' }}>OK</span></div>
+    <div>> DEPLOYING ROYAL_VUE... <span style={{ color: 'white' }}>ACTIVE</span></div>
+    <div className="blink" style={{ width: '10px', height: '15px', background: 'var(--primary-gold)', display: 'inline-block', verticalAlign: 'middle', marginLeft: '5px' }}></div>
+  </div>
+);
+
 const Navbar = () => (
   <nav className="navbar glass-card" style={{ 
     position: 'fixed', top: '20px', left: '50%', transform: 'translateX(-50%)', 
@@ -88,6 +109,7 @@ const App = () => {
 
   return (
     <div className="portfolio-app">
+      <DigitalMatrix />
       {/* Background Glow */}
       <div 
         style={{
@@ -112,15 +134,26 @@ const App = () => {
             transition={{ duration: 1 }}
           >
             <h4 className="serif" style={{ color: 'var(--primary-gold)', letterSpacing: '8px', marginBottom: '1rem', textTransform: 'uppercase' }}>Royal Professional Portfolio</h4>
-            <h1 className="section-title gold-text" style={{ fontSize: '5rem', lineHeight: '1', textAlign: 'left', marginBottom: '1.5rem' }}>
+            <h1 className="section-title gold-text glitch-hover" style={{ fontSize: '5.5rem', lineHeight: '1', textAlign: 'left', marginBottom: '1.5rem' }}>
               Crafting Digital <br /> Majesty & Innovation
             </h1>
-            <p style={{ fontSize: '1.2rem', maxWidth: '600px', color: 'var(--text-muted)', marginBottom: '2.5rem' }}>
-              I am a visionary developer and designer dedicated to creating high-end digital experiences that define the future of technology and elegance.
-            </p>
-            <div style={{ display: 'flex', gap: '20px' }}>
-              <button className="premium">View Projects</button>
-              <button className="premium" style={{ borderColor: 'var(--text-muted)', color: 'var(--text-muted)' }}>Download CV</button>
+            <div style={{ display: 'flex', gap: '40px', alignItems: 'flex-start' }}>
+              <div style={{ flex: 1 }}>
+                <p style={{ fontSize: '1.2rem', maxWidth: '500px', color: 'var(--text-muted)', marginBottom: '2.5rem' }}>
+                  A visionary developer blending elite aesthetics with cutting-edge technical architecture.
+                </p>
+                <div style={{ display: 'flex', gap: '20px' }}>
+                  <button className="premium">View Source</button>
+                  <button className="premium" style={{ borderColor: 'var(--text-muted)', color: 'var(--text-muted)' }}>Dev Log</button>
+                </div>
+              </div>
+              <motion.div 
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5 }}
+              >
+                <GlassConsole />
+              </motion.div>
             </div>
           </motion.div>
         </div>
@@ -177,17 +210,23 @@ const App = () => {
                 key={proj.id}
                 whileHover={{ scale: 1.02 }}
                 className="glass-card"
-                style={{ padding: '40px', display: 'flex', flexDirection: 'column', gap: '20px' }}
+                style={{ padding: '40px', display: 'flex', flexDirection: 'column', gap: '20px', position: 'relative', overflow: 'hidden' }}
               >
-                <Code color="var(--primary-gold)" size={32} />
+                <div className="scanline" style={{ opacity: 0.05 }} />
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <Code color="var(--primary-gold)" size={32} />
+                  <span className="mono" style={{ fontSize: '0.7rem', color: 'var(--primary-gold)', opacity: 0.6 }}>PROJ_ID::{proj.id.toString().padStart(3, '0')}</span>
+                </div>
                 <h3 className="serif" style={{ fontSize: '1.8rem' }}>{proj.title}</h3>
                 <p style={{ color: 'var(--text-muted)' }}>{proj.desc}</p>
                 <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
                   {proj.tech.map(t => (
-                    <span key={t} style={{ fontSize: '0.8rem', padding: '4px 12px', border: '1px solid var(--glass-border)', borderRadius: '20px' }}>{t}</span>
+                    <span key={t} className="mono" style={{ fontSize: '0.7rem', padding: '4px 12px', border: '1px solid var(--glass-border)', borderRadius: '4px', background: 'rgba(212, 175, 55, 0.05)' }}>{t}</span>
                   ))}
                 </div>
-                <button className="premium" style={{ width: 'fit-content', padding: '8px 20px', fontSize: '0.8rem', marginTop: 'auto' }}>View Project</button>
+                <button className="premium mono" style={{ width: 'fit-content', padding: '8px 20px', fontSize: '0.7rem', gap: '10px', marginTop: 'auto' }}>
+                  EXECUTE_LINK <ExternalLink size={14} />
+                </button>
               </motion.div>
             ))}
           </div>
