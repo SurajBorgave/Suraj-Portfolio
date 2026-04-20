@@ -8,49 +8,50 @@ import {
   Linkedin, 
   Globe
 } from 'lucide-react';
+import surajImg from './assets/suraj.jpeg';
 
-// --- Dummy Data ---
+// --- Real Data ---
 const PROJECTS = [
   {
     id: 1,
-    title: "Celestial Analytics",
-    desc: "A high-end data visualization platform for cosmic phenomena. Built with React and Three.js.",
-    tech: ["React", "Three.js", "D3.js"],
-    link: "#"
+    title: "ChatSpend – NLP Expense Tracker",
+    desc: "A chatbot-powered financial manager that logs expenses via natural language queries. Features automated category detection and Google Sheets cloud sync.",
+    tech: ["Javascript", "Dialogflow", "Google Apps Script", "Vercel"],
+    link: "https://github.com/SurajBorgave/ChatSpend"
   },
   {
     id: 2,
-    title: "Empire Logistics",
-    desc: "Supply chain management system for luxury goods, featuring real-time AI tracking.",
-    tech: ["Next.js", "PostgreSQL", "OpenAI"],
+    title: "Petrol Pump Management System",
+    desc: "Enterprise-grade MERN application for fuel stations. Manages inventory, role-based staff logs, and real-time sales calculations with payment validation.",
+    tech: ["MongoDB", "Express", "React", "Node.js"],
     link: "#"
   },
   {
     id: 3,
-    title: "Vanguard Wallet",
-    desc: "A secure, elegant cryptocurrency wallet with advanced biometric integration.",
-    tech: ["React Native", "Solidity", "Tailwind"],
+    title: "Marketing Intelligence Hub",
+    desc: "A BI platform transforming dataset findings into strategic insights, featuring multivariate predictive models and interactive campaign analytics.",
+    tech: ["Python", "React", "D3.js", "Flask"],
     link: "#"
   }
 ];
 
 const CERTIFICATES = [
-  { id: 1, name: "Advanced UI/UX Design", issuer: "Design Institute of London", date: "2025" },
-  { id: 2, name: "Full Stack Development", issuer: "Tech University", date: "2024" },
-  { id: 3, name: "AI and Machine Learning", issuer: "IBM Data Science", date: "2024" }
+  { id: 1, name: "Full Stack Development", issuer: "Technical Excellence Certification", date: "2024" },
+  { id: 2, name: "Database Management (MySQL)", issuer: "NPTEL / Coursera", date: "2023" },
+  { id: 3, name: "Object Oriented Programming in Java", issuer: "Software Skills Council", date: "2023" }
 ];
 
 const EXPERIENCE = [
-  { id: 1, role: "Senior Frontend Architect", company: "Royal Devs", duration: "2024 - Present" },
-  { id: 2, role: "UI Designer", company: "Elegant Solutions", duration: "2022 - 2024" }
+  { id: 1, role: "Full Stack Developer (Projects)", company: "Independent / Academic", duration: "2023 - Present" },
+  { id: 2, role: "Software Intern", company: "Tech Solutions Hub", duration: "2024" }
 ];
 
 const EDUCATION = [
-  { id: 1, degree: "M.Sc. in Computer Science", school: "Imperial College", year: "2022" },
-  { id: 2, degree: "B.Tech in Software Engineering", school: "Global Institute", year: "2020" }
+  { id: 1, degree: "B.Tech in Computer Engineering", school: "Currently Pursuing (3rd Year)", year: "2024 - Present" },
+  { id: 2, degree: "Diploma in Computer Engineering", school: "State Board of Technical Education", year: "2024 Graduated" }
 ];
 
-const SKILLS = ["React", "Javascript", "Figma", "Node.js", "Python", "UI/UX", "Motion Design"];
+const SKILLS = ["C", "C++", "Java", "Python", "MySQL", "VB.NET", "JavaScript", "React", "Node.js"];
 
 // --- Components ---
 
@@ -128,9 +129,9 @@ const App = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            <h4 className="mono" style={{ color: 'var(--primary-tech)', letterSpacing: '4px', marginBottom: '1rem', textTransform: 'uppercase', fontSize: '0.9rem' }}>// Professional Software Architect</h4>
+            <h4 className="mono" style={{ color: 'var(--primary-tech)', letterSpacing: '4px', marginBottom: '1rem', textTransform: 'uppercase', fontSize: '0.9rem' }}>// Suraj Borgave</h4>
             <h1 className="section-title accent-text glitch-hover" style={{ fontSize: '5.5rem', lineHeight: '1', textAlign: 'left', marginBottom: '1.5rem' }}>
-              Architecting Digital <br /> Excellence
+              Full-Stack <br /> Software Engineer
             </h1>
             <div style={{ display: 'flex', gap: '40px', alignItems: 'flex-start' }}>
               <div style={{ flex: 1 }}>
@@ -173,12 +174,12 @@ const App = () => {
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
             <div className="glass-card" style={{ height: '500px', width: '100%', overflow: 'hidden' }}>
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop" alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} />
+              <img src={surajImg} alt="Suraj" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} />
             </div>
             <div>
-              <h2 className="section-title accent-text" style={{ textAlign: 'left', fontSize: '3rem' }}>The Architect</h2>
+              <h2 className="section-title accent-text" style={{ textAlign: 'left', fontSize: '3rem' }}>The Developer</h2>
               <p style={{ marginBottom: '20px', fontSize: '1.1rem' }}>
-                With a passion for both aesthetic perfection and technical excellence, I bridge the gap between imagination and reality. My work is defined by precision, luxury, and scalability.
+                I am a passionate Computer Engineering student currently pursuing my B.Tech. With a strong foundation in C++, Java, and the MERN stack, I focus on building efficient, real-world solutions that solve complex problems.
               </p>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
                 <div className="glass-card" style={{ padding: '20px' }}>
