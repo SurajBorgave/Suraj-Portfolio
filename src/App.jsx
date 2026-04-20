@@ -24,14 +24,14 @@ const PROJECTS = [
     title: "Petrol Pump Management System",
     desc: "Enterprise-grade MERN application for fuel stations. Manages inventory, role-based staff logs, and real-time sales calculations with payment validation.",
     tech: ["MongoDB", "Express", "React", "Node.js"],
-    link: "#"
+    link: "https://github.com/SurajBorgave/Petrolpump_management_system"
   },
   {
     id: 3,
     title: "Marketing Intelligence Hub",
     desc: "A BI platform transforming dataset findings into strategic insights, featuring multivariate predictive models and interactive campaign analytics.",
     tech: ["Python", "React", "D3.js", "Flask"],
-    link: "#"
+    link: "https://github.com/SurajBorgave/MarketingInsights"
   }
 ];
 
@@ -94,6 +94,7 @@ const Navbar = () => (
 
 const App = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [formStatus, setFormStatus] = useState('IDLE'); // IDLE, SENDING, SUCCESS, ERROR
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -102,6 +103,33 @@ const App = () => {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
+
+  const handleContactSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus('SENDING');
+    
+    const form = e.target;
+    const data = new FormData(form);
+    
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        setFormStatus('SUCCESS');
+        form.reset();
+      } else {
+        setFormStatus('ERROR');
+      }
+    } catch (error) {
+      setFormStatus('ERROR');
+    }
+  };
 
   return (
     <div className="portfolio-app">
@@ -139,7 +167,7 @@ const App = () => {
                   A visionary developer blending elite aesthetics with cutting-edge technical architecture.
                 </p>
                 <div style={{ display: 'flex', gap: '20px' }}>
-                  <button className="premium">View Source</button>
+                  <a href="https://github.com/SurajBorgave/Suraj-Portfolio" target="_blank" rel="noopener noreferrer" className="premium" style={{ textDecoration: 'none' }}>View Source</a>
                   <button className="premium" style={{ borderColor: 'var(--text-muted)', color: 'var(--text-muted)' }}>Dev Log</button>
                 </div>
               </div>
@@ -220,9 +248,15 @@ const App = () => {
                     <span key={t} className="mono" style={{ fontSize: '0.7rem', padding: '4px 12px', border: '1px solid var(--glass-border)', borderRadius: '4px', background: 'rgba(212, 175, 55, 0.05)' }}>{t}</span>
                   ))}
                 </div>
-                <button className="premium mono" style={{ width: 'fit-content', padding: '8px 20px', fontSize: '0.7rem', gap: '10px', marginTop: 'auto' }}>
+                <a 
+                  href={proj.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="premium mono" 
+                  style={{ width: 'fit-content', padding: '8px 20px', fontSize: '0.7rem', gap: '10px', marginTop: 'auto', textDecoration: 'none', display: 'flex', alignItems: 'center' }}
+                >
                   EXECUTE_LINK <ExternalLink size={14} />
-                </button>
+                </a>
               </motion.div>
             ))}
           </div>
@@ -311,11 +345,29 @@ const App = () => {
             <p style={{ fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto 40px', color: 'var(--text-muted)' }}>
               Open for technical collaborations and architecture development. Send a ping.
             </p>
-            <form action="https://formspree.io/f/surajborgave161@gmail.com" method="POST" style={{ maxWidth: '600px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <form 
+              action="https://formspree.io/f/surajborgave161@gmail.com" 
+              method="POST" 
+              onSubmit={handleContactSubmit}
+              style={{ maxWidth: '600px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '20px' }}
+            >
               <input type="text" name="name" placeholder="Your Name" required style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)', padding: '15px 25px', borderRadius: '10px', color: 'white', outline: 'none' }} />
               <input type="email" name="email" placeholder="Your Email" required style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)', padding: '15px 25px', borderRadius: '10px', color: 'white', outline: 'none' }} />
               <textarea name="message" placeholder="Your Message" rows="5" required style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)', padding: '15px 25px', borderRadius: '10px', color: 'white', outline: 'none' }}></textarea>
-              <button className="premium mono" type="submit" style={{ padding: '15px' }}>SEND PING</button>
+              <button 
+                className="premium mono" 
+                type="submit" 
+                disabled={formStatus === 'SENDING'}
+                style={{ padding: '15px', color: formStatus === 'SUCCESS' ? '#00f2ff' : 'white' }}
+              >
+                {formStatus === 'IDLE' && 'SEND PING'}
+                {formStatus === 'SENDING' && 'SENDING_DATA...'}
+                {formStatus === 'SUCCESS' && 'DATA_SENT_SUCCESSFULLY'}
+                {formStatus === 'ERROR' && 'TRANSMISSION_ERROR_RETRY'}
+              </button>
+              {formStatus === 'SUCCESS' && (
+                <p style={{ color: 'var(--primary-tech)', marginTop: '10px' }}>Transmission Complete. Check your Gmail verification if it's the first time!</p>
+              )}
             </form>
           </div>
         </div>
@@ -326,7 +378,7 @@ const App = () => {
         <div className="container">
           <div className="sans" style={{ fontSize: '2rem', fontWeight: 'bold', letterSpacing: '2px', color: 'var(--primary-tech)', marginBottom: '20px' }}>SURAJ</div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', marginBottom: '30px' }}>
-            <Github color="var(--text-muted)" size={24} style={{ cursor: 'pointer' }} />
+            <a href="https://github.com/SurajBorgave" target="_blank" rel="noopener noreferrer"><Github color="var(--text-muted)" size={24} style={{ cursor: 'pointer' }} /></a>
             <Linkedin color="var(--text-muted)" size={24} style={{ cursor: 'pointer' }} />
             <Globe color="var(--text-muted)" size={24} style={{ cursor: 'pointer' }} />
           </div>
