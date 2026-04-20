@@ -311,11 +311,11 @@ const App = () => {
             <p style={{ fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto 40px', color: 'var(--text-muted)' }}>
               Open for technical collaborations and architecture development. Send a ping.
             </p>
-            <form style={{ maxWidth: '600px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-              <input type="text" placeholder="Your Name" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)', padding: '15px 25px', borderRadius: '10px', color: 'white', outline: 'none' }} />
-              <input type="email" placeholder="Your Email" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)', padding: '15px 25px', borderRadius: '10px', color: 'white', outline: 'none' }} />
-              <textarea placeholder="Your Message" rows="5" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)', padding: '15px 25px', borderRadius: '10px', color: 'white', outline: 'none' }}></textarea>
-              <button className="premium mono" type="button" style={{ padding: '15px' }}>SEND PING</button>
+            <form action="https://formspree.io/f/surajborgave161@gmail.com" method="POST" style={{ maxWidth: '600px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              <input type="text" name="name" placeholder="Your Name" required style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)', padding: '15px 25px', borderRadius: '10px', color: 'white', outline: 'none' }} />
+              <input type="email" name="email" placeholder="Your Email" required style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)', padding: '15px 25px', borderRadius: '10px', color: 'white', outline: 'none' }} />
+              <textarea name="message" placeholder="Your Message" rows="5" required style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)', padding: '15px 25px', borderRadius: '10px', color: 'white', outline: 'none' }}></textarea>
+              <button className="premium mono" type="submit" style={{ padding: '15px' }}>SEND PING</button>
             </form>
           </div>
         </div>
